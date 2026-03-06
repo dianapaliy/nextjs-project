@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const isLoggedIn = false;
 
   if (!isLoggedIn && request.nextUrl.pathname.startsWith("/profile")) {
