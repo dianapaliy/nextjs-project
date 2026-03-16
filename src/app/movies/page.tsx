@@ -1,19 +1,16 @@
-export const dynamic = 'force-dynamic';
-
 import Image from "next/image";
 import Link from "next/link";
-import { MoviesPoster } from "./data";
+import moviesPosters, { MoviesPoster } from "./data";
 
 export default async function MoviesPage() {
-  const movies = await fetch("http://localhost:3000/api/movies");
-  const moviesPosters: MoviesPoster[] = await movies.json();
+  const movies: MoviesPoster[] = moviesPosters;
 
   return (
     <main className="container mx-auto">
       <h1 className="text-6xl font-bold text-center mt-10">Фильмы</h1>
 
       <div className="grid grid-cols-3 gap-4 mt-10 max-w-4xl mx-auto">
-        {moviesPosters.map(({ id, src, title, year, rating }) => (
+        {movies.map(({ id, src, title, year, rating }) => (
           <Link
             key={id}
             href={`/movies/${id}`}
